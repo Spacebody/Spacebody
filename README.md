@@ -1,16 +1,50 @@
-### Hi there 👋
+```rust
+impl Spacebody {
+    pub fn introduce() -> Spacebody {
+        Spacebody {
+            name: "Jerry",
+            sex: "Male",
+            location: Location {
+                city: "Hangzhou",
+                country: "China",
+            },
+            profession: "BackEnd",
+            emails: vec!["510662916@qq.com", "jerryzyl18@gmail.com"],
+            blog: "https://blog.yilin.dev",
+            skills: vec!["Spring/SpringBoot", "Microservices", "Docker"],
+            languages: vec!["Java", "C/C++", "Rust"],
+            hobbies: vec!["Reading", "Photography"],
+            status: vec![Status::BusyForWork, Status::EnjoyHolidays, Status::SeekTrueLove].choose(&mut rand::thread_rng()).unwrap().clone(),
+        }
+    }
+}
 
-<!--
-**Spacebody/Spacebody** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+#[derive(Debug)]
+pub struct Spacebody {
+    name: &'static str,
+    sex: &'static str,
+    location: Location,
+    profession: &'static str,
+    emails: Vec<&'static str>,
+    blog: &'static str,
+    skills: Vec<&'static str>,
+    languages: Vec<&'static str>,
+    hobbies: Vec<&'static str>,
+    status: Status,
+}
 
-Here are some ideas to get you started:
+#[derive(Debug, Copy, Clone)]
+enum Status {
+    BusyForWork, 
+    EnjoyHolidays,
+    SeekTrueLove,
+}
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+#[derive(Debug)]
+struct Location {
+    city: &'static str,
+    country: &'static str
+}
+
+use rand::seq::SliceRandom;
+```
